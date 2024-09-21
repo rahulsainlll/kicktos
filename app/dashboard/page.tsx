@@ -197,7 +197,7 @@ export default function Component() {
             {projects.map((project) => (
               <Card key={project.id}>
                 <CardHeader>
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
                     className="w-full h-32 object-cover rounded-t-lg"
