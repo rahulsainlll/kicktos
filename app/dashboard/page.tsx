@@ -29,42 +29,41 @@ import {
   Search,
   FolderOpen,
   User,
+  Upload,
 } from "lucide-react";
 import Link from "next/link";
 
 export default function Component() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const projects = [
     {
       id: 1,
-      title: "Project Alpha",
+      title: "Transportation automation",
       description:
-        "A groundbreaking initiative to revolutionize user experiences through innovative design and cutting-edge technology.",
-      image: "/placeholder.svg?height=100&width=200",
+        "Project based on Delhi transportation automation route and dynamic scheduling",
+      image: "/img.png?height=100&width=200",
     },
     {
       id: 2,
-      title: "Project Beta",
+      title: "Suppy chain tracking system",
       description:
-        "Exploring the frontiers of artificial intelligence to create smarter, more intuitive software solutions.",
-      image: "/placeholder.svg?height=100&width=200",
-    },
-    {
-      id: 3,
-      title: "Project Gamma",
-      description:
-        "Developing sustainable, eco-friendly products that make a positive impact on our planet and communities.",
-      image: "/placeholder.svg?height=100&width=200",
-    },
-    {
-      id: 4,
-      title: "Project Delta",
-      description:
-        "Reimagining urban mobility with advanced transportation systems and smart city integration.",
-      image: "/placeholder.svg?height=100&width=200",
+        "Blockchain-based supply chain tracking system: Ensures transparency and traceability in ...",
+      image: "/placeholder3.png?height=100&width=200",
     },
   ];
+
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -129,7 +128,8 @@ export default function Component() {
                   <PlusCircle className="mr-2 h-4 w-4" /> Create Project
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
+
+              <DialogContent className="sm:max-w-[425px] bg-white">
                 <DialogHeader>
                   <DialogTitle>Create New Project</DialogTitle>
                   <DialogDescription>
@@ -149,6 +149,39 @@ export default function Component() {
                       Description
                     </Label>
                     <Textarea id="description" className="col-span-3" />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="image" className="text-right">
+                      Image
+                    </Label>
+                    <div className="col-span-3">
+                      <Input
+                        id="image"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="hidden"
+                      />
+                      <Label
+                        htmlFor="image"
+                        className="flex items-center justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none"
+                      >
+                        {selectedImage ? (
+                          <img
+                            src={selectedImage}
+                            alt="Selected"
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <span className="flex items-center space-x-2">
+                            <Upload className="w-6 h-6 text-gray-600" />
+                            <span className="font-medium text-gray-600">
+                              Click to upload an image
+                            </span>
+                          </span>
+                        )}
+                      </Label>
+                    </div>
                   </div>
                 </div>
                 <DialogFooter>
@@ -176,8 +209,8 @@ export default function Component() {
                   </CardDescription>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="outline" className="w-full">
-                    View Details
+                  <Button variant="outline" className="w-full text-xs">
+                    0x2c97dc5169CD19d6287429960c392E99EB23C558
                   </Button>
                 </CardFooter>
               </Card>

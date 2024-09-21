@@ -1,9 +1,18 @@
+"use client"
+
 import Image from "next/image";
 import { FaMedal } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
+import { useRouter } from "next/navigation"; 
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleRedirect = () => {
+    router.push("/dashboard"); 
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -48,7 +57,9 @@ export default function Home() {
           Backing Innovations, Empowering Creators - Together on Web3
         </p>
         <div className="flex items-center mb-4">
-          <Button className="mr-2">Get started</Button>
+          <Button className="mr-2" onClick={handleRedirect}>
+            Get started
+          </Button>
         </div>
       </div>
     </div>

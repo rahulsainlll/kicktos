@@ -24,9 +24,9 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Explore", href: "/explore" },
-    { name: "Create", href: "/create" },
+    { name: "Create", href: "/vest" },
     { name: "Marketplace", href: "/marketplace" },
-    { name: "Community", href: "/community" },
+    { name: "Dashboard", href: "/dashboard" },
   ];
 
   return (
