@@ -10,8 +10,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu, X, Wallet } from "lucide-react";
+import { ConnectButton } from "thirdweb/react";
+import { client } from "./../app/client";
+
+import { createWallet } from "thirdweb/wallets";
 
 export default function Navbar() {
+  const wallets = [
+    createWallet("io.metamask"),
+    createWallet("com.coinbase.wallet"),
+    createWallet("me.rainbow"),
+    createWallet("io.rabby"),
+    createWallet("io.zerion.wallet"),
+  ];
   const [isOpen, setIsOpen] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const router = useRouter();
@@ -23,9 +34,8 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { name: "Explore", href: "/explore" },
+    { name: "Explore", href: "/" },
     { name: "Create", href: "/vest" },
-    { name: "Marketplace", href: "/marketplace" },
     { name: "Dashboard", href: "/dashboard" },
   ];
 
@@ -52,16 +62,25 @@ export default function Navbar() {
               ))}
             </div>
           </div>
-          
+
           <div className="hidden md:block">
-            <Button
+            {/* <Button
               onClick={handleConnect}
               variant="outline"
               className="ml-4 flex items-center"
             >
               <Wallet className="mr-2 h-4 w-4" />
               {isConnected ? "Disconnect Wallet" : "Connect Wallet"}
-            </Button>
+            </Button> */}
+            <ConnectButton
+              client={client}
+              wallets={wallets}
+              connectButton={{ label: "KickTos Connect" }}
+              connectModal={{
+                size: "wide",
+                title: "Welcome To KickTos",
+              }}
+            />
           </div>
           <div className="md:hidden flex items-center">
             <DropdownMenu>

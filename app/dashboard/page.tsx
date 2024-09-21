@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -70,7 +71,7 @@ export default function Component() {
       {/* Sidebar Navigation */}
       <div className="w-64 bg-white shadow-md">
         <div className="p-4">
-          <h1 className="text-2xl font-bold">Dashboard</h1>
+          <h1 className="text-2xl font-bold" >Dashboard</h1>
         </div>
         <nav className="mt-4">
           <Link
