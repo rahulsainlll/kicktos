@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { FaMedal } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
 
   const handleRedirect = () => {
-    router.push("/dashboard"); 
+    router.push("/dashboard");
   };
 
   return (
@@ -40,7 +40,6 @@ export default function Home() {
             fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)"
           />
         </svg>
-
         <a
           href="/"
           target="_blank"

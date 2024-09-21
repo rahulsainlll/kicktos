@@ -50,7 +50,7 @@ export default function Component() {
       id: 2,
       title: "Suppy chain tracking system",
       description:
-        "Blockchain-based supply chain tracking system: Ensures transparency and traceability in ...",
+        "Blockchain-based supply chain tracking system: Ensures transparency and traceability in ",
       image: "/placeholder3.png?height=100&width=200",
     },
   ];
@@ -118,7 +118,7 @@ export default function Component() {
             <div className="relative w-full sm:w-auto">
               <Input
                 type="search"
-                placeholder="Search projects..."
+                placeholder="Search projects"
                 className="pl-10 pr-4 py-2 w-full sm:w-64 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
               <Search className="absolute left-3 top-2.5 text-gray-400" />
@@ -168,7 +168,7 @@ export default function Component() {
                         className="flex items-center justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none"
                       >
                         {selectedImage ? (
-                          <img
+                          <Image
                             src={selectedImage}
                             alt="Selected"
                             className="w-full h-full object-cover"
